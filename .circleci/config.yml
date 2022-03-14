@@ -14,7 +14,7 @@ jobs:
       - run: 
          apt-get install docker.io -y
       - run: 
-         docker build -t zmbuildimg .
+         sudo docker build -t zmbuildimg .
 
 workflows:
   my-custom-workflow:
