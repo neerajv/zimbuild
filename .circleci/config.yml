@@ -1,26 +1,27 @@
-version: 2.1
-executors:
-  my-custom-executor:
-    docker:
-      - image: ubuntu:18.04
-jobs:
-  my-job-name:
+version: 2
 
-    executor: my-custom-executor
+############################################################################
+
+references:
+   default_environment_settings: &default_environment_settings
+      docker:
+        - image: circleci/openjdk:8-node
+     
+############################################################################
+
+jobs:
+  build:
+    <<: *default_environment_settings
     steps:
       - checkout
-      - run: 
-         apt-get update -y
-      - run: 
-         apt-get install docker.io -y
-      - run: 
-         apt-get install sudo -y
-      - run: 
-         sudo service docker start
-      - run: 
-         sudo docker build -t zmbuildimg .
+      - run:
+          name: Install ant-contrib
+          command: docker build -t zmimage .
+############################################################################
 
 workflows:
-  my-custom-workflow:
+  version: 2
+  build_deploy:
     jobs:
-      - my-job-name
+      - build:
+############################################################################
