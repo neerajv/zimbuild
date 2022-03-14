@@ -1,9 +1,12 @@
 jobs:
       docker:
          - image: ubuntu:18.04
-      RUN:
+      - run:
          - pwd
          - ls
          - whoami
+         - mkdir zm
+         - cd zm
+         - git clone https://github.com/neerajv/zimbuild.git .
          - docker build -t image .
          - docker run -it --name mycontzm myimg /bin/bash
