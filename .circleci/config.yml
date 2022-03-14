@@ -5,29 +5,29 @@ jobs:
       docker:
          - image: ubuntu:18.04
       - run:
-   name: pwd command
+        name: pwd command
         command: pwd
  - run:
-   name: ls command
+        name: ls command
         command: ls
  - run:
-   name: who am i command
+        name: who am i command
         command: whoami
-      - run:
-   name: folder
+  - run:
+        name: folder
         command: mkdir zm
  - run:
-   name: cd foldr
+        name: cd foldr
         command: cd zm
-      - run:
-   name: git clone
+ - run:
+        name: git clone
         command: git clone https://github.com/neerajv/zimbuild.git .
-      - run:
-   name: docker build
+ - run:
+        name: docker build
         command: docker build -t myimg . 
  - run:
-   name: docker run
+        name: docker run
         command: docker run -it --name mycontzm myimg /bin/bash
-      - run:
+ - run:
         name: Install ant-contrib
         command: sudo apt-get update; sudo apt-get install ant-contrib
