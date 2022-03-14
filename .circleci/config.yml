@@ -9,8 +9,8 @@ jobs:
     executor: my-custom-executor
     steps:
       - checkout
-      - run: |
-          # ls ; pwd ; whoami;
+      - run: 
+        ls
 
 workflows:
   my-custom-workflow:
