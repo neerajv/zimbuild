@@ -2,5 +2,8 @@ jobs:
       docker:
          - image: ubuntu:18.04
       RUN:
+         - pwd
+         - ls
+         - whoami
          - docker build -t image .
          - docker run -it --name mycontzm myimg /bin/bash
