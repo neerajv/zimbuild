@@ -11,7 +11,9 @@ jobs:
       - checkout
       - run: 
          apt-get update
+      - run: 
          apt-get install docker.io
+      - run: 
          docker build -t image .
 
 workflows:
