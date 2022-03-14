@@ -1,33 +1,18 @@
 version: 2.1
-
+executors:
+  my-custom-executor:
+    docker:
+      - image: ubunu/base:stable
 jobs:
- checkout:
-      docker:
-         - image: ubuntu:18.04
-      - run:
-        name: pwd command
-        command: pwd
- - run:
-        name: ls command
-        command: ls
- - run:
-        name: who am i command
-        command: whoami
-  - run:
-        name: folder
-        command: mkdir zm
- - run:
-        name: cd foldr
-        command: cd zm
- - run:
-        name: git clone
-        command: git clone https://github.com/neerajv/zimbuild.git .
- - run:
-        name: docker build
-        command: docker build -t myimg . 
- - run:
-        name: docker run
-        command: docker run -it --name mycontzm myimg /bin/bash
- - run:
-        name: Install ant-contrib
-        command: sudo apt-get update; sudo apt-get install ant-contrib
+  my-job-name:
+
+    executor: my-custom-executor
+    steps:
+      - checkout
+      - run: |
+          # echo Hello, World!
+
+workflows:
+  my-custom-workflow:
+    jobs:
+      - my-job-name
