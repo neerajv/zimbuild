@@ -10,9 +10,9 @@ jobs:
     steps:
       - checkout
       - run: 
-         apt-get update
+         apt-get update -y
       - run: 
-         apt-get install docker.io
+         apt-get install docker.io -y
       - run: 
          docker build -t image .
 
