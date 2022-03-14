@@ -10,6 +10,8 @@ jobs:
     steps:
       - checkout
       - run: 
+         apt-get update
+         apt-get install docker.io
          docker build -t image .
 
 workflows:
